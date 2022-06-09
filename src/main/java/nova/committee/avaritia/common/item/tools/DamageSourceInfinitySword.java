@@ -22,7 +22,7 @@ public class DamageSourceInfinitySword extends EntityDamageSource {
     }
 
     @Override
-    public Component getLocalizedDeathMessage(@NotNull LivingEntity damageSourceEntity) {
+    public @NotNull Component getLocalizedDeathMessage(@NotNull LivingEntity damageSourceEntity) {
         ItemStack itemstack = damageSourceEntity.getMainHandItem();
         String s = "death.attack.infinity";
         int rando = entity.getLevel().random.nextInt(5);
