@@ -6,7 +6,6 @@ import net.minecraft.client.resources.language.I18n;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -46,7 +45,7 @@ public class MatterClusterItem extends Item {
     public MatterClusterItem() {
         super(new Properties()
                 .stacksTo(1));
-        setRegistryName("matter_cluster");
+        //setRegistryName("matter_cluster");
     }
 
     public static List<ItemStack> makeClusters(Set<ItemStack> input) {
@@ -96,7 +95,7 @@ public class MatterClusterItem extends Item {
     }
 
     public static ItemStack makeCluster(Map<ItemStackWrapper, Integer> input) {
-        ItemStack cluster = new ItemStack(ModItems.matter_cluster);
+        ItemStack cluster = new ItemStack(ModItems.matter_cluster.get());
         int total = 0;
         for (int num : input.values()) {
             total += num;
@@ -201,8 +200,8 @@ public class MatterClusterItem extends Item {
         }
         CompoundTag clustertag = stack.getOrCreateTag().getCompound(MAINTAG);
 
-        tooltip.add(new TextComponent(clustertag.getInt(MAINCOUNTTAG) + "/" + CAPACITY + " " + I18n.get("tooltip.matter_cluster.counter")));
-        tooltip.add(new TextComponent(""));
+        tooltip.add(Component.literal(clustertag.getInt(MAINCOUNTTAG) + "/" + CAPACITY + " " + I18n.get("tooltip.matter_cluster.counter")));
+        tooltip.add(Component.literal(""));
 
         if (Screen.hasShiftDown()) {
             ListTag list = clustertag.getList(LISTTAG, 10);
@@ -211,11 +210,11 @@ public class MatterClusterItem extends Item {
                 ItemStack countstack = ItemStack.of(tag.getCompound(ITEMTAG));
                 int count = tag.getInt(COUNTTAG);
 
-                tooltip.add(new TextComponent(countstack.getItem().getRarity(countstack).color + countstack.getDisplayName().getString() + ChatFormatting.GRAY + " x " + count));
+                tooltip.add(Component.literal(countstack.getItem().getRarity(countstack).color + countstack.getDisplayName().getString() + ChatFormatting.GRAY + " x " + count));
             }
         } else {
-            tooltip.add(new TextComponent(ChatFormatting.DARK_GRAY + I18n.get("tooltip.matter_cluster.desc")));
-            tooltip.add(new TextComponent(ChatFormatting.DARK_GRAY.toString() + ChatFormatting.ITALIC + I18n.get("tooltip.matter_cluster.desc2")));
+            tooltip.add(Component.literal(ChatFormatting.DARK_GRAY + I18n.get("tooltip.matter_cluster.desc")));
+            tooltip.add(Component.literal(ChatFormatting.DARK_GRAY.toString() + ChatFormatting.ITALIC + I18n.get("tooltip.matter_cluster.desc2")));
         }
 
     }

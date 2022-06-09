@@ -9,6 +9,7 @@ import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.core.Direction;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.client.RenderProperties;
 import net.minecraftforge.client.model.data.EmptyModelData;
@@ -85,11 +86,11 @@ public class PartialItemModelRenderer {
 
         for (Direction direction : Iterate.directions) {
             random.setSeed(42L);
-            ir.renderQuadList(ms, p_229114_6_, model.getQuads(null, direction, random, data), stack, light,
+            ir.renderQuadList(ms, p_229114_6_, model.getQuads(null, direction, (RandomSource) random, data), stack, light,
                     overlay);
         }
 
         random.setSeed(42L);
-        ir.renderQuadList(ms, p_229114_6_, model.getQuads(null, null, random, data), stack, light, overlay);
+        ir.renderQuadList(ms, p_229114_6_, model.getQuads(null, null, (RandomSource) random, data), stack, light, overlay);
     }
 }

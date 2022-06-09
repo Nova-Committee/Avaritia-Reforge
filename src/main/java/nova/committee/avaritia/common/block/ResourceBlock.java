@@ -16,9 +16,13 @@ import nova.committee.avaritia.api.common.block.BaseBlock;
 public class ResourceBlock extends BaseBlock {
     public ResourceBlock(SoundType soundType, String registryName) {
         super(Material.METAL, soundType, 25f, 1000f, true);
-        setRegistryName(registryName);
+        //setRegistryName(registryName);
     }
 
+    public ResourceBlock(SoundType soundType) {
+        super(Material.METAL, soundType, 25f, 1000f, true);
+        //setRegistryName(registryName);
+    }
 
     @Override
     public float getEnchantPowerBonus(BlockState state, LevelReader level, BlockPos pos) {

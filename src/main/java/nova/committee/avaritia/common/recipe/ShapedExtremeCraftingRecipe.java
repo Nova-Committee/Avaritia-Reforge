@@ -16,7 +16,6 @@ import net.minecraft.world.item.crafting.ShapedRecipe;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.InvWrapper;
-import net.minecraftforge.registries.ForgeRegistryEntry;
 import nova.committee.avaritia.init.registry.ModRecipeTypes;
 
 import java.util.Map;
@@ -116,7 +115,7 @@ public class ShapedExtremeCraftingRecipe implements ISpecialRecipe, ICraftRecipe
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return ModRecipeTypes.SHAPED_EXTREME_CRAFT_RECIPE;
+        return ModRecipeTypes.SHAPED_EXTREME_CRAFT_RECIPE.get();
     }
 
     @Override
@@ -173,7 +172,7 @@ public class ShapedExtremeCraftingRecipe implements ISpecialRecipe, ICraftRecipe
         this.transformers = transformers;
     }
 
-    public static class Serializer extends ForgeRegistryEntry<RecipeSerializer<?>> implements RecipeSerializer<ShapedExtremeCraftingRecipe> {
+    public static class Serializer implements RecipeSerializer<ShapedExtremeCraftingRecipe> {
         @Override
         public ShapedExtremeCraftingRecipe fromJson(ResourceLocation recipeId, JsonObject json) {
             var map = ShapedRecipe.keyFromJson(GsonHelper.getAsJsonObject(json, "key"));

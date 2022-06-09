@@ -4,14 +4,13 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import nova.committee.avaritia.common.item.EndestPearlItem;
 import nova.committee.avaritia.init.config.ModConfig;
 import nova.committee.avaritia.init.handler.SingularityRegistryHandler;
 import nova.committee.avaritia.init.proxy.ClientProxy;
 import nova.committee.avaritia.init.proxy.IProxy;
 import nova.committee.avaritia.init.proxy.ServerProxy;
-import nova.committee.avaritia.init.registry.ModEntities;
+import nova.committee.avaritia.init.registry.*;
 
 /**
  * Description:
@@ -26,11 +25,12 @@ public class Avaritia {
     public Avaritia() {
         ModConfig.register();
 
-        var bus = FMLJavaModLoadingContext.get().getModEventBus();
-        bus.register(this);
-
-        ModEntities.ENTITIES.register(bus);
-
+        ModBlocks.init();
+        ModEntities.init();
+        ModItems.init();
+        ModMenus.init();
+        ModRecipeTypes.init();
+        ModTileEntities.init();
 
         proxy.init();
     }

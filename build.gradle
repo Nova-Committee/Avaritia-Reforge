@@ -23,7 +23,7 @@ apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
 
 group = 'nova.committee'
-version = '1.18.2-1.0.9'
+version = '1.19-1.0.9'
 
 java {
     archivesBaseName = 'Avaritia-Reforged-forge'
@@ -35,7 +35,8 @@ tasks.withType(JavaCompile) {
 
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 minecraft {
-    mappings channel: 'parchment', version: '2022.05.02-1.18.2'
+    //mappings channel: 'parchment', version: '2022.05.02-1.18.2'
+    mappings channel: 'official', version: '1.19'
 
     accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 
@@ -140,19 +141,19 @@ repositories {
 
 dependencies {
 
-    minecraft 'net.minecraftforge:forge:1.18.2-40.1.19'
+    minecraft 'net.minecraftforge:forge:1.19-41.0.5'
     //compileOnly fg.deobf("codechicken:CodeChickenLib:1.18.2-4.1.0.449:universal")
     //runtimeOnly fg.deobf("codechicken:CodeChickenLib:1.18.2-4.1.0.449:universal")
-    compileOnly fg.deobf('com.blamejared.crafttweaker:CraftTweaker-forge-1.18.2:9.1.116')
-    compileOnly fg.deobf('curse.maven:jade-324717:3761542')
-    compileOnly fg.deobf('mezz.jei:jei-1.18.2:9.7.0.193:api')
+    //compileOnly fg.deobf('com.blamejared.crafttweaker:CraftTweaker-forge-1.18.2:9.1.116')
+    //compileOnly fg.deobf('curse.maven:jade-324717:3761542')
+    //compileOnly fg.deobf('mezz.jei:jei-1.18.2:9.7.0.193:api')
     //compileOnly fg.deobf(fileTree(dir: 'libs', include: ['*.jar']))
     //compileOnly("teamtwilight:twilightforest:4.0.546:universal")
     //implementation fg.deobf('vazkii.botania:Botania:1.18.2-431')
 //    implementation fg.deobf('vazkii.patchouli:Patchouli:1.18.2-67')
 //    implementation fg.deobf('top.theillusivec4.curios:curios-forge:1.18.2-5.0.6.3')
     //implementation fg.deobf("curse.maven:projecte-226410:${projecte_id}")
-    runtimeOnly fg.deobf('mezz.jei:jei-1.18.2:9.7.0.193')
+    //runtimeOnly fg.deobf('mezz.jei:jei-1.18.2:9.7.0.193')
 
 
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'

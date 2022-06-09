@@ -15,7 +15,6 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.common.util.RecipeMatcher;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.InvWrapper;
-import net.minecraftforge.registries.ForgeRegistryEntry;
 import nova.committee.avaritia.init.registry.ModRecipeTypes;
 
 import java.util.ArrayList;
@@ -67,7 +66,7 @@ public class ShapelessExtremeCraftingRecipe implements ISpecialRecipe, ICraftRec
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return ModRecipeTypes.SHAPELESS_EXTREME_CRAFT_RECIPE;
+        return ModRecipeTypes.SHAPELESS_EXTREME_CRAFT_RECIPE.get();
     }
 
     @Override
@@ -133,7 +132,7 @@ public class ShapelessExtremeCraftingRecipe implements ISpecialRecipe, ICraftRec
         this.transformers = transformers;
     }
 
-    public static class Serializer extends ForgeRegistryEntry<RecipeSerializer<?>> implements RecipeSerializer<ShapelessExtremeCraftingRecipe> {
+    public static class Serializer implements RecipeSerializer<ShapelessExtremeCraftingRecipe> {
         @Override
         public ShapelessExtremeCraftingRecipe fromJson(ResourceLocation recipeId, JsonObject json) {
             NonNullList<Ingredient> inputs = NonNullList.create();

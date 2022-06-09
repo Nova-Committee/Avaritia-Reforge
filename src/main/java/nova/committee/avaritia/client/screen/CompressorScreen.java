@@ -3,7 +3,6 @@ package nova.committee.avaritia.client.screen;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
@@ -60,7 +59,7 @@ public class CompressorScreen extends BaseContainerScreen<CompressorMenu> {
                     tooltip.add(this.getMaterialStackDisplayName());
                 }
 
-                var text = new TextComponent(number(this.getMaterialCount()) + " / " + number(this.getMaterialsRequired()));
+                var text = Component.literal(number(this.getMaterialCount()) + " / " + number(this.getMaterialsRequired()));
 
                 tooltip.add(text);
             }
@@ -138,7 +137,7 @@ public class CompressorScreen extends BaseContainerScreen<CompressorMenu> {
             }
         }
 
-        return new TextComponent("");
+        return Component.literal("");
     }
 
     private CompressorTileEntity getTileEntity() {

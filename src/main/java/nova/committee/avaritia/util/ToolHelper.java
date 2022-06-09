@@ -105,7 +105,7 @@ public class ToolHelper {
         boolean isTrash = false;
         for (TagKey<Item> id : suspect.getTags().toList()) {
             for (String ore : defaultTrashOres) {
-                if (id.registry().getRegistryName().toString().equals(ore)) {
+                if (id.registry().registry().toString().equals(ore)) {
                     return true;
                 }
             }
@@ -125,7 +125,7 @@ public class ToolHelper {
                 return;
             }
             Material material = state.getMaterial();
-            if (block == Blocks.GRASS && stack.getItem() == ModItems.pick_axe) {
+            if (block == Blocks.GRASS && stack.getItem() == ModItems.pick_axe.get()) {
                 world.setBlockAndUpdate(pos, Blocks.DIRT.defaultBlockState());
             }
 

@@ -35,7 +35,7 @@ public class BowInfinityItem extends BowItem {
                 .rarity(ModItems.COSMIC_RARITY)
                 .fireResistant()
         );
-        setRegistryName("infinity_bow");
+        //setRegistryName("infinity_bow");
     }
 
     @Override

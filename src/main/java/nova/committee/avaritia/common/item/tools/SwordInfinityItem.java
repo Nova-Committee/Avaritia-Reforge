@@ -40,7 +40,7 @@ public class SwordInfinityItem extends SwordItem {
                 .tab(ModTab.TAB)
                 .stacksTo(1)
                 .fireResistant());
-        setRegistryName("infinity_sword");
+        //setRegistryName("infinity_sword");
     }
 
 

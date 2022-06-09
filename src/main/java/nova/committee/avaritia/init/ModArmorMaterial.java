@@ -21,7 +21,7 @@ import java.util.function.Supplier;
 public class ModArmorMaterial {
 
     public static final ArmorMaterial infinite_armor = new SimpleArmorMaterial(new int[]{9999, 9999, 9999, 9999}, new int[]{6, 16, 12, 6}, 1000,
-            SoundEvents.ARMOR_EQUIP_DIAMOND, () -> Ingredient.of(ModItems.infinity_ingot), Static.MOD_ID + ":" + "infinity_armor", 1.0f, 1.0f);
+            SoundEvents.ARMOR_EQUIP_DIAMOND, () -> Ingredient.of(ModItems.infinity_ingot.get()), Static.MOD_ID + ":" + "infinity_armor", 1.0f, 1.0f);
 
 
     public static class SimpleArmorMaterial implements ArmorMaterial {

@@ -44,7 +44,7 @@ public class HoeInfinityItem extends HoeItem {
                 .stacksTo(1)
                 .fireResistant());
 
-        setRegistryName("infinity_hoe");
+        //setRegistryName("infinity_hoe");
     }
 
     @Override
@@ -126,8 +126,8 @@ public class HoeInfinityItem extends HoeItem {
         var world = context.getLevel();
         var blockpos = context.getClickedPos();
         var block1 = world.getBlockState(blockpos).getBlock();
-        int hook = net.minecraftforge.event.ForgeEventFactory.onHoeUse(context);
-        if (hook != 0) return hook > 0 ? InteractionResult.SUCCESS : InteractionResult.FAIL;
+        //int hook = net.minecraftforge.event.ForgeEventFactory.onHoeUse(context);
+        //if (hook != 0) return hook > 0 ? InteractionResult.SUCCESS : InteractionResult.FAIL;
         if (context.getClickedFace() != Direction.DOWN && world.isEmptyBlock(blockpos.above()) && (block1 instanceof GrassBlock
                 || block1.equals(Blocks.DIRT) || block1.equals(Blocks.COARSE_DIRT))) {
             var blockstate = Blocks.FARMLAND.defaultBlockState().setValue(FarmBlock.MOISTURE, 7);

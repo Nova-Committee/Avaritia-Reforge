@@ -38,7 +38,7 @@ public class NeutronCollectorBlock extends BaseTileEntityBlock {
 
     public NeutronCollectorBlock() {
         super(Material.METAL, SoundType.METAL, 50f, 2000f);
-        setRegistryName("neutron_collector");
+        //setRegistryName("neutron_collector");
 
     }
 
@@ -81,12 +81,12 @@ public class NeutronCollectorBlock extends BaseTileEntityBlock {
 
     @Override
     protected <T extends BlockEntity> BlockEntityTicker<T> getServerTicker(Level level, BlockState state, BlockEntityType<T> type) {
-        return createTicker(type, ModTileEntities.neutron_collector_tile, NeutronCollectorTile::tick);
+        return createTicker(type, ModTileEntities.neutron_collector_tile.get(), NeutronCollectorTile::tick);
     }
 
     @Override
     protected <T extends BlockEntity> BlockEntityTicker<T> getClientTicker(Level level, BlockState state, BlockEntityType<T> type) {
-        return createTicker(type, ModTileEntities.neutron_collector_tile, NeutronCollectorTile::tick);
+        return createTicker(type, ModTileEntities.neutron_collector_tile.get(), NeutronCollectorTile::tick);
     }
 
     @Override

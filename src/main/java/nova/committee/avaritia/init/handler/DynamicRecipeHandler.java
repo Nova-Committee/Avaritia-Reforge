@@ -6,6 +6,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.ForgeRegistries;
 import nova.committee.avaritia.Static;
 import nova.committee.avaritia.common.item.singularity.Singularity;
 import nova.committee.avaritia.common.recipe.CompressorRecipe;
@@ -68,7 +69,7 @@ public class DynamicRecipeHandler {
             }
         }
 
-        return new ShapelessExtremeCraftingRecipe(result.getItem().getRegistryName(), getList(arraylist), result);
+        return new ShapelessExtremeCraftingRecipe(ForgeRegistries.ITEMS.getKey(result.getItem()), getList(arraylist), result);
     }
 
     private static NonNullList<Ingredient> getList(List<ItemStack> arrayList) {

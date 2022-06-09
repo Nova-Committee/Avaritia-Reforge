@@ -3,8 +3,7 @@ package nova.committee.avaritia.init.handler;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.TextComponent;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.TagKey;
@@ -108,7 +107,7 @@ public class InfinityHandler {
     private static boolean isGarbageBlock(Block block) {
         //Static.LOGGER.info(TagCollectionManager.getInstance().getBlocks().getAllTags().keySet());
         for (TagKey<Block> id : block.defaultBlockState().getTags().toList()) {
-            ResourceLocation block_main = id.registry().getRegistryName();
+            ResourceLocation block_main = id.registry().registry();
             String ore = block_main.getPath();
             if (ore.contains("cobblestone") || ore.contains("stone") || ore.contains("netherrack")) {
                 return true;
@@ -178,10 +177,10 @@ public class InfinityHandler {
         BlockPos pos = event.getPos();
         BlockState state = world.getBlockState(pos);
         Block block = state.getBlock();
-        if (event.getItemStack().getItem() == ModItems.pick_axe) {
+        if (event.getItemStack().getItem() == ModItems.pick_axe.get()) {
             if (state.getDestroySpeed(world, event.getPos()) <= -1 || state.getMaterial() == Material.STONE || state.getMaterial() == Material.METAL) {
                 if (event.getItemStack().getOrCreateTag().getBoolean("hammer")) {
-                    ModItems.pick_axe.onBlockStartBreak(event.getPlayer().getMainHandItem(), event.getPos(), event.getPlayer());
+                    ModItems.pick_axe.get().onBlockStartBreak(event.getPlayer().getMainHandItem(), event.getPos(), event.getPlayer());
                 }
             }
 
@@ -197,7 +196,7 @@ public class InfinityHandler {
         }
         ItemStack mainHand = event.getPlayer().getMainHandItem();
 
-        if (!mainHand.isEmpty() && mainHand.getItem() == ModItems.pick_axe) {
+        if (!mainHand.isEmpty() && mainHand.getItem() == ModItems.pick_axe.get()) {
             applyLuck(event, 4);
         }
     }
@@ -206,7 +205,7 @@ public class InfinityHandler {
     public static void digging(PlayerEvent.BreakSpeed event) {
         if (!event.getEntityLiving().getMainHandItem().isEmpty()) {
             ItemStack held = event.getEntityLiving().getMainHandItem();
-            if (held.getItem() == ModItems.pick_axe || held.getItem() == ModItems.infinity_shovel) {
+            if (held.getItem() == ModItems.pick_axe.get() || held.getItem() == ModItems.infinity_shovel.get()) {
                 if (!event.getEntityLiving().isOnGround()) {
                     event.setNewSpeed(event.getNewSpeed() * 5);
                 }
@@ -224,7 +223,7 @@ public class InfinityHandler {
     public static void canHarvest(PlayerEvent.HarvestCheck event) {
         if (!event.getEntityLiving().getMainHandItem().isEmpty()) {
             ItemStack held = event.getEntityLiving().getMainHandItem();
-            if (held.getItem() == ModItems.pick_axe && event.getTargetBlock().getMaterial() == Material.STONE) {
+            if (held.getItem() == ModItems.pick_axe.get() && event.getTargetBlock().getMaterial() == Material.STONE) {
                 if (held.getOrCreateTag().getBoolean("destroyer") && isGarbageBlock(event.getTargetBlock().getBlock())) {
                     event.setResult(Event.Result.ALLOW);
                 }
@@ -235,7 +234,7 @@ public class InfinityHandler {
     //合并物质团
     @SubscribeEvent
     public static void clusterClustererererer(EntityItemPickupEvent event) {
-        if (event.getPlayer() != null && event.getItem().getItem().getItem() == ModItems.matter_cluster) {
+        if (event.getPlayer() != null && event.getItem().getItem().getItem() == ModItems.matter_cluster.get()) {
             ItemStack stack = event.getItem().getItem();
             Player player = event.getPlayer();
 
@@ -243,7 +242,7 @@ public class InfinityHandler {
                 if (stack.isEmpty()) {
                     break;
                 }
-                if (slot.getItem() == ModItems.matter_cluster) {
+                if (slot.getItem() == ModItems.matter_cluster.get()) {
                     MatterClusterItem.mergeClusters(stack, slot);
                 }
             }
@@ -263,17 +262,17 @@ public class InfinityHandler {
         if (event.getItemStack().getItem() instanceof SwordInfinityItem) {
             for (int x = 0; x < event.getToolTip().size(); x++) {
                 if (event.getToolTip().get(x).getString().contains(I18n.get("tooltip.infinity.desc")) || event.getToolTip().get(x).getString().equals(I18n.get("attribute.name.generic.attack_damage"))) {
-                    event.getToolTip().set(x, new TextComponent("+").withStyle(ChatFormatting.BLUE).append(new TextComponent(TextUtil.makeFabulous(I18n.get("tooltip.infinity")))).append(" ").append(new TranslatableComponent("tooltip.infinity.desc").withStyle(ChatFormatting.BLUE)));
+                    event.getToolTip().set(x, Component.literal("+").withStyle(ChatFormatting.BLUE).append(Component.literal(TextUtil.makeFabulous(I18n.get("tooltip.infinity")))).append(" ").append(Component.translatable("tooltip.infinity.desc").withStyle(ChatFormatting.BLUE)));
                     return;
                 }
             }
         } else if (event.getItemStack().getItem() instanceof ArmorInfinityItem) {
             for (int x = 0; x < event.getToolTip().size(); x++) {
                 if (event.getToolTip().get(x).getString().contains(I18n.get("tooltip.armor.desc"))) {
-                    event.getToolTip().set(x, new TextComponent("+").withStyle(ChatFormatting.BLUE).append(new TextComponent(TextUtil.makeFabulous(I18n.get("tooltip.infinity")))).append(" ").append(new TranslatableComponent("tooltip.armor.desc").withStyle(ChatFormatting.BLUE)));
+                    event.getToolTip().set(x, Component.literal("+").withStyle(ChatFormatting.BLUE).append(Component.literal(TextUtil.makeFabulous(I18n.get("tooltip.infinity")))).append(" ").append(Component.translatable("tooltip.armor.desc").withStyle(ChatFormatting.BLUE)));
                     return;
                 } else if (event.getToolTip().get(x).getString().contains(I18n.get("tooltip.armor_toughness.desc"))) {
-                    event.getToolTip().set(x, new TextComponent("+").withStyle(ChatFormatting.BLUE).append(new TextComponent(TextUtil.makeFabulous(I18n.get("tooltip.infinity")))).append(" ").append(new TranslatableComponent("tooltip.armor_toughness.desc").withStyle(ChatFormatting.BLUE)));
+                    event.getToolTip().set(x, Component.literal("+").withStyle(ChatFormatting.BLUE).append(Component.literal(TextUtil.makeFabulous(I18n.get("tooltip.infinity")))).append(" ").append(Component.translatable("tooltip.armor_toughness.desc").withStyle(ChatFormatting.BLUE)));
                     return;
                 }
 
@@ -288,7 +287,7 @@ public class InfinityHandler {
         if (!(event.getEntityLiving() instanceof Player player)) {
             return;
         }
-        if (!player.getMainHandItem().isEmpty() && player.getMainHandItem().getItem() == ModItems.infinity_sword && player.getMainHandItem().useOnRelease()) {
+        if (!player.getMainHandItem().isEmpty() && player.getMainHandItem().getItem() == ModItems.infinity_sword.get() && player.getMainHandItem().useOnRelease()) {
             event.setCanceled(true);
         }
         if (isInfinite(player) && !event.getSource().getMsgId().equals("infinity")) {
@@ -314,7 +313,7 @@ public class InfinityHandler {
     @SubscribeEvent
     public static void onLivingDrops(LivingDropsEvent event) {
         if (event.isRecentlyHit() && event.getEntityLiving() instanceof Skeleton && event.getSource().getEntity() instanceof Player player) {
-            if (!player.getMainHandItem().isEmpty() && player.getMainHandItem().getItem() == ModItems.skull_sword) {
+            if (!player.getMainHandItem().isEmpty() && player.getMainHandItem().getItem() == ModItems.skull_sword.get()) {
                 if (event.getDrops().isEmpty()) {
                     addDrop(event, new ItemStack(Items.WITHER_SKELETON_SKULL, 1));
                 } else {

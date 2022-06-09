@@ -20,7 +20,7 @@ public class ColorHandler {
     public static void onItemColors(ColorHandlerEvent.Item event) {
         var colors = event.getItemColors();
 
-        colors.register(new IColored.ItemColors(), ModItems.singularity);
+        colors.register(new IColored.ItemColors(), ModItems.singularity.get());
 
     }
 

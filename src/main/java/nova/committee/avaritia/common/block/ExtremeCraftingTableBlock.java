@@ -27,7 +27,7 @@ public class ExtremeCraftingTableBlock extends BaseTileEntityBlock {
 
     public ExtremeCraftingTableBlock() {
         super(Material.METAL, SoundType.GLASS, 100f, 2000F, true);
-        setRegistryName("extreme_crafting_table");
+        //setRegistryName("extreme_crafting_table");
     }
 
     @Override

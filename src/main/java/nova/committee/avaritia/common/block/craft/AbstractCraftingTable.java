@@ -2,7 +2,6 @@ package nova.committee.avaritia.common.block.craft;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
@@ -25,12 +24,12 @@ import org.jetbrains.annotations.NotNull;
  * Version: 1.0
  */
 public class AbstractCraftingTable extends BaseBlock {
-    private static final Component CONTAINER_TITLE = new TranslatableComponent("container.crafting");
+    private static final Component CONTAINER_TITLE = Component.translatable("container.crafting");
 
 
     public AbstractCraftingTable(Material material, SoundType sound, float hardness, float resistance, boolean tool, String name) {
         super(material, sound, hardness, resistance, tool);
-        setRegistryName(name);
+        //setRegistryName(name);
     }
 
     public static MenuProvider getCrafterContainerElement(Player player, Level world, BlockPos pos) {

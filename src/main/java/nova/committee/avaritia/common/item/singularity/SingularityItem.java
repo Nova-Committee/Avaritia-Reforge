@@ -31,7 +31,7 @@ public class SingularityItem extends Item implements IColored {
 
     @Override
     public void fillItemCategory(@NotNull CreativeModeTab group, @NotNull NonNullList<ItemStack> items) {
-        if (this.allowdedIn(group)) {
+        if (this.allowedIn(group)) {
             SingularityRegistryHandler.getInstance().getSingularities().forEach(singularity -> {
                 items.add(SingularityUtils.getItemForSingularity(singularity));
             });

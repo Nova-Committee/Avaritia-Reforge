@@ -115,7 +115,7 @@ public class SingularityUtils {
 
     public static ItemStack getItemForSingularity(Singularity singularity) {
         var nbt = makeTag(singularity);
-        var stack = new ItemStack(ModItems.singularity);
+        var stack = new ItemStack(ModItems.singularity.get());
 
         stack.setTag(nbt);
 

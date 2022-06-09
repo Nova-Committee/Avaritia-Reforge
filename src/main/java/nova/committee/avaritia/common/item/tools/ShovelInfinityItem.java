@@ -37,7 +37,7 @@ public class ShovelInfinityItem extends ShovelItem {
                 .stacksTo(1)
                 .fireResistant());
 
-        setRegistryName("infinity_shovel");
+        //setRegistryName("infinity_shovel");
     }
 
     @Override

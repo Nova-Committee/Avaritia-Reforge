@@ -2,7 +2,6 @@ package nova.committee.avaritia.util;
 
 import com.google.common.collect.ImmutableMap;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.Container;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -37,9 +36,9 @@ public class RecipeUtil {
         return getRecipeManager().recipes;
     }
 
-    public static <C extends Container, T extends Recipe<C>> Map<ResourceLocation, Recipe<C>> getRecipes(RecipeType<T> type) {
-        return getRecipeManager().byType(type);
-    }
+//    public static <C extends Container, T extends Recipe<C>> Map<ResourceLocation, Recipe<C>> getRecipes(RecipeType<T> type) {
+//        return getRecipeManager().byType(type);
+//    }
 
     public static void addRecipe(Recipe<?> recipe) {
         getRecipeManager().recipes.computeIfAbsent(recipe.getType(), t -> new HashMap<>()).put(recipe.getId(), recipe);

@@ -11,6 +11,7 @@ import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ForgeModelBakery;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.ForgeRegistries;
 import nova.committee.avaritia.api.client.render.CustomRenderedItemModel;
 import nova.committee.avaritia.api.client.render.CustomRenderedItems;
 
@@ -80,7 +81,7 @@ public class ModelsHandler {
 
     public static List<ModelResourceLocation> getAllBlockStateModelLocations(Block block) {
         List<ModelResourceLocation> models = new ArrayList<>();
-        ResourceLocation blockRl = block.getRegistryName();
+        ResourceLocation blockRl = ForgeRegistries.BLOCKS.getKey(block);
         block.getStateDefinition()
                 .getPossibleStates()
                 .forEach(state -> {
@@ -90,6 +91,6 @@ public class ModelsHandler {
     }
 
     public static ModelResourceLocation getItemModelLocation(Item item) {
-        return new ModelResourceLocation(item.getRegistryName(), "inventory");
+        return new ModelResourceLocation(ForgeRegistries.ITEMS.getKey(item), "inventory");
     }
 }

@@ -7,6 +7,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -54,6 +55,11 @@ public class ModEntities {
                     .setShouldReceiveVelocityUpdates(true)
                     .build(new ResourceLocation(Static.MOD_ID, "heaven_sub_arrow").toString()));
 
+
+    public static void init() {
+        var bus = FMLJavaModLoadingContext.get().getModEventBus();
+        ENTITIES.register(bus);
+    }
 
     @OnlyIn(Dist.CLIENT)
     public static void onClientSetup() {

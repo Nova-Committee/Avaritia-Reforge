@@ -14,7 +14,6 @@ import net.minecraft.world.item.crafting.ShapedRecipe;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.InvWrapper;
-import net.minecraftforge.registries.ForgeRegistryEntry;
 import nova.committee.avaritia.init.registry.ModRecipeTypes;
 
 /**
@@ -68,7 +67,7 @@ public class CompressorRecipe implements ISpecialRecipe, ICompressorRecipe {
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return ModRecipeTypes.COMPRESSOR_RECIPE;
+        return ModRecipeTypes.COMPRESSOR_RECIPE.get();
     }
 
     @Override
@@ -103,7 +102,7 @@ public class CompressorRecipe implements ISpecialRecipe, ICompressorRecipe {
         return this.inputCount;
     }
 
-    public static class Serializer extends ForgeRegistryEntry<RecipeSerializer<?>> implements RecipeSerializer<CompressorRecipe> {
+    public static class Serializer implements RecipeSerializer<CompressorRecipe> {
         @Override
         public CompressorRecipe fromJson(ResourceLocation recipeId, JsonObject json) {
             var input = Ingredient.fromJson(json.getAsJsonObject("ingredient"));

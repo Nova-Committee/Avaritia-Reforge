@@ -1,5 +1,5 @@
 modLoader="javafml" #mandatory
-loaderVersion="[40,)" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
+loaderVersion="[41,)" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
 license="MIT"
 #issueTrackerURL="http://my.issue.tracker/" #optional
 [[mods]] #mandatory
@@ -17,13 +17,13 @@ description='''
 [[dependencies.avaritia]] #optional
    modId="forge" #mandatory
    mandatory=true #mandatory
-   versionRange="[40,)" #mandatory
+   versionRange="[41,)" #mandatory
    ordering="NONE"
    side="BOTH"
 [[dependencies.avaritia]]
    modId="minecraft"
    mandatory=true
    # This version range declares a minimum of the current minecraft version up to but not including the next major version
-   versionRange="[1.18.2,1.19)"
+   versionRange="[1.19,1.20)"
    ordering="NONE"
    side="BOTH"

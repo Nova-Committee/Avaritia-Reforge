@@ -43,7 +43,7 @@ public class PickaxeInfinityItem extends PickaxeItem {
                 .stacksTo(1)
                 .fireResistant());
 
-        setRegistryName("infinity_pickaxe");
+        //setRegistryName("infinity_pickaxe");
     }
 
     @Override

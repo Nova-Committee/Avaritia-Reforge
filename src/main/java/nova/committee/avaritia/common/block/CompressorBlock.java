@@ -36,7 +36,7 @@ public class CompressorBlock extends BaseTileEntityBlock {
 
     public CompressorBlock() {
         super(Material.METAL, SoundType.METAL, 50F, 2000F, true);
-        setRegistryName("neutronium_compressor");
+        //setRegistryName("neutronium_compressor");
     }
 
     @Nullable
@@ -104,11 +104,11 @@ public class CompressorBlock extends BaseTileEntityBlock {
 
     @Override
     protected <T extends BlockEntity> BlockEntityTicker<T> getServerTicker(Level level, BlockState state, BlockEntityType<T> type) {
-        return createTicker(type, ModTileEntities.compressor_tile, CompressorTileEntity::tick);
+        return createTicker(type, ModTileEntities.compressor_tile.get(), CompressorTileEntity::tick);
     }
 
     @Override
     protected <T extends BlockEntity> BlockEntityTicker<T> getClientTicker(Level level, BlockState state, BlockEntityType<T> type) {
-        return createTicker(type, ModTileEntities.compressor_tile, CompressorTileEntity::tick);
+        return createTicker(type, ModTileEntities.compressor_tile.get(), CompressorTileEntity::tick);
     }
 }

@@ -1,7 +1,6 @@
 package nova.committee.avaritia.common.item.tools;
 
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.damagesource.EntityDamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -30,7 +29,7 @@ public class DamageSourceInfinitySword extends EntityDamageSource {
         if (rando != 0) {
             s = s + "." + rando;
         }
-        return new TranslatableComponent(s, entity.getDisplayName(), itemstack.getDisplayName());
+        return Component.translatable(s, entity.getDisplayName(), itemstack.getDisplayName());
     }
 
     @Override

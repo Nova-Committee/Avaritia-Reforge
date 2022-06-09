@@ -4,7 +4,6 @@ import com.google.common.collect.Collections2;
 import com.google.common.collect.Lists;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -94,8 +93,8 @@ public class ArmorInfinityItem extends ArmorItem {
     @Override
     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> tooltip, TooltipFlag pIsAdvanced) {
         if (slot == EquipmentSlot.FEET) {
-            tooltip.add(new TextComponent(""));
-            tooltip.add(new TextComponent(ChatFormatting.BLUE + "+" + ChatFormatting.ITALIC + TextUtil.makeSANIC("SANIC") + ChatFormatting.RESET + "" + ChatFormatting.BLUE + "% Speed"));
+            tooltip.add(Component.literal(""));
+            tooltip.add(Component.literal(ChatFormatting.BLUE + "+" + ChatFormatting.ITALIC + TextUtil.makeSANIC("SANIC") + ChatFormatting.RESET + "" + ChatFormatting.BLUE + "% Speed"));
         }
         super.appendHoverText(pStack, pLevel, tooltip, pIsAdvanced);
     }

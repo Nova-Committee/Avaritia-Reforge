@@ -31,7 +31,7 @@ import org.jetbrains.annotations.NotNull;
 public class EndestPearlItem extends Item {
     public EndestPearlItem() {
         super(new Properties().tab(ModTab.TAB).stacksTo(16));
-        setRegistryName("endest_pearl");
+        //setRegistryName("endest_pearl");
     }
 
     public static void registerDispenser() {
@@ -45,7 +45,7 @@ public class EndestPearlItem extends Item {
             }
         };
 
-        DispenserBlock.registerBehavior(ModItems.endest_pearl, defaultdispenseitembehavior);
+        DispenserBlock.registerBehavior(ModItems.endest_pearl.get(), defaultdispenseitembehavior);
     }
 
     @Override

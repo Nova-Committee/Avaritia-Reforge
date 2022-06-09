@@ -2,7 +2,6 @@ package nova.committee.avaritia.common.item.resources;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
@@ -28,16 +27,16 @@ public class StarFuelItem extends Item {
 
     public static final int BURN_TIME = Integer.MAX_VALUE;
 
-    public StarFuelItem(Rarity rarity, String name) {
+    public StarFuelItem(Rarity rarity) {
         super(new Item.Properties().stacksTo(1).rarity(rarity).tab(ModTab.TAB));
-        setRegistryName(name);
+        //setRegistryName(name);
     }
 
     @OnlyIn(Dist.CLIENT)
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
         super.appendHoverText(stack, level, list, flag);
-        list.add(new TranslatableComponent("tooltip.star_fuel.desc").withStyle(ChatFormatting.GRAY));
+        list.add(Component.translatable("tooltip.star_fuel.desc").withStyle(ChatFormatting.GRAY));
     }
 
     @Override

@@ -35,7 +35,7 @@ public class AxeInfinityItem extends AxeItem {
                 .stacksTo(1)
                 .fireResistant());
 
-        setRegistryName("infinity_axe");
+        //setRegistryName("infinity_axe");
     }
 
     @Override

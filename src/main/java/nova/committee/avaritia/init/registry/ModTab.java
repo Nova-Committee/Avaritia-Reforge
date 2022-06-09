@@ -19,6 +19,6 @@ public class ModTab extends CreativeModeTab {
 
     @Override
     public @NotNull ItemStack makeIcon() {
-        return new ItemStack(ModItems.pick_axe);
+        return new ItemStack(ModItems.pick_axe.get());
     }
 }
